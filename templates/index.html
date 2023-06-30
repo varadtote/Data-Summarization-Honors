@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Data Summarization</title>
+  </head>
+  <body>
+    <!-- <p>{{result}}</p> -->
+    <form action="{{url_for('summarize')}}" method="post">
+      <textarea
+        name="data"
+        cols="30"
+        rows="10"
+        placeholder="Enter your Data"
+        required="required"
+        class="border-blue-gray-500 text-blue-gray-700 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 disabled:bg-blue-gray-50 peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0"
+      >
+      </textarea>
+      <input type="range" min="20" max="500" value="100" name="maxL" />
+      <button
+        class="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        type="submit"
+      >
+        Submit
+      </button>
+      <button
+        class="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        type="reset"
+      >
+        Clear
+      </button>
+    </form>
+
+    <h3>Summarized Text</h3>
+    <textarea
+      name="result"
+      id=""
+      cols="30"
+      rows="10"
+      class="border-blue-gray-500 text-blue-gray-700 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 disabled:bg-blue-gray-50 peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0"
+    >
+        {{result}}
+    </textarea>
+  </body>
+</html>
