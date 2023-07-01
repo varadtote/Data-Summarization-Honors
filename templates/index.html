@@ -7,41 +7,36 @@
     <title>Data Summarization</title>
   </head>
   <body>
-    <!-- <p>{{result}}</p> -->
-    <form action="{{url_for('summarize')}}" method="post">
-      <textarea
-        name="data"
-        cols="30"
-        rows="10"
-        placeholder="Enter your Data"
-        required="required"
-        class="border-blue-gray-500 text-blue-gray-700 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 disabled:bg-blue-gray-50 peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0"
-      >
-      </textarea>
-      <input type="range" min="20" max="500" value="100" name="maxL" />
-      <button
-        class="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-        type="submit"
-      >
-        Submit
-      </button>
-      <button
-        class="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-        type="reset"
-      >
-        Clear
-      </button>
-    </form>
-
-    <h3>Summarized Text</h3>
-    <textarea
-      name="result"
-      id=""
-      cols="30"
-      rows="10"
-      class="border-blue-gray-500 text-blue-gray-700 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 disabled:bg-blue-gray-50 peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0"
-    >
-        {{result}}
-    </textarea>
+    <header>
+      <div class="w-screen">
+        <h1 class="mb-4 bg-orange-400 pt-4 pb-8 text-center text-3xl font-bold"> Text Summarization </h1>
+      </div>
+    </header>
+    <!-- Text Input  -->
+    <div class="main flex">
+      <div class="m-4 w-1/2">
+        <form class="flex flex-col" action="{{url_for('summarize')}}" method="post">
+          <textarea name="data" rows="20" cols="50" required class="mb-4 border-2 border-solid border-black" placeholder="Enter text for Summarization here ..."></textarea>
+          <div class="slidecontainer">
+            <input type="range" min="20" max="1000" value="100" class="slider mb-4" name="maxL" id="myRange" />
+            <p> Minimum Words in Summary: <span id="demo" class="text-xl font-bold text-green-500"></span>
+            </p>
+          </div>
+          <div class="mt-2 flex justify-around">
+            <button class="mb-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700" type="submit"> Submit </button>
+            <button class="mb-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700" type="reset"> Clear </button>
+          </div>
+        </form>
+      </div>
+      <!-- Result -->
+      <div class="mt-4 w-1/2">
+        <textarea readonly name="result" id="textareacopy" cols="50" rows="20" class="w-full border-2 border-solid border-black bg-gray-200" placeholder="Your Summary...">
+        {{result}}</textarea>
+        <div class="flex h-24 items-center justify-center">
+          <button onclick="copy()" class="mb-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700" type="reset"> Copy Summary </button>
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
   </body>
 </html>

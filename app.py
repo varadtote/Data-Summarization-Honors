@@ -16,7 +16,7 @@ def summarize():
         data = req.form["data"]
         maxL = int(req.form["maxL"])
 
-        minL = 70
+        minL = 20
         # maxL = 100 
         def query(payload): 
             response = requests.post(API_URL, headers=headers, json=payload)
@@ -37,9 +37,8 @@ def summarize():
 
 @app.route("/home")
 def home():
-    return "Welcome to Home 🏡 "
+    return "Welcome to Home  Buddy 🏡 "
 
 
 if __name__ == '__main__':
-   app.debug = True
-   app.run()
+   app.run(debug=True)
