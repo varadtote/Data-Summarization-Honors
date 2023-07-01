@@ -1,6 +1,12 @@
 import requests
 from flask import Flask, render_template, url_for
 from flask import request as req
+from dotenv.main import load_dotenv
+import os
+
+load_dotenv()
+
+Token = os.environ['token']
 
 app = Flask(__name__)
 @app.route("/", methods=["GET","POST"])
@@ -11,7 +17,7 @@ def index():
 def summarize():
     if req.method == "POST":
         API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-        headers = {"Authorization": "Bearer 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"}
+        headers = {"Authorization": Token}
 
         data = req.form["data"]
         maxL = int(req.form["maxL"])

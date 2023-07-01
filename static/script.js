@@ -12,3 +12,8 @@ function copy() {
     textarea.select();
     document.execCommand("copy");
 }
+
+function clearsummary() {
+    let textarea = document.getElementById("textareacopy");
+    textarea.innerHTML = "";
+}
